@@ -309,7 +309,7 @@ if [ "$cacheFolder" != "unset" ]; then
 		cp "$image" "$quelle/$name"
 	done
 
-# Zwichenspeicher löschen
+# Zwischenspeicher löschen
 	echo "[....] loesche den Cache..." >&2
 	if ! rm -rf "$cacheFolder"; then
 		echo "[ERROR] Keine Berechtigung zum Löschen des Zwischenspeichers (Ordner) $cacheFolder!" >&2
