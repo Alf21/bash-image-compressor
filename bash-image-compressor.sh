@@ -136,15 +136,19 @@ while getopts ":q:z:g:aoth" opt; do
 	  add="1"
 	  ;;
 	t) # Text -> Anleitung
+		str=$(basename "$0")
+		#ln=`expr "${#str}" - 3` # cut .sh
+		#str="${str:${#ln}}"
+		str="./$str" #add ./ in front of the filename for normal execution
 		echo "--- Anleitung ---" >&2
 		echo "" >&2
 		echo -e "Um alle Bilder eines Ordners zu komprimieren, gibt es folgende Moeglichkeiten:" >&2
-		echo -e "1.\t 'gym_compress -q [QUELLE] -z [ZIEL]': Der Zielordner darf nicht existieren bzw. Dateien enthalten!" >&2
-		echo -e "2.\t 'gym_compress -q [QUELLE] -z [ZIEL] -o': Alle Dateien im Zielordner werden überschrieben (also auch bereits vorhandene)." >&2
-		echo -e "3.\t 'gym_compress -q [QUELLE] -z [ZIEL] -a': Alle Dateien, die noch nicht im Zielordner existieren, werden hinzugefuegt." >&2
-		echo -e "4.\t 'gym_compress -q [QUELLE] -z [ZIEL]': Wenn der Zielordner auch der Quellordner ist, wird ein Zwischenspeicher erstellt." >&2
+		echo -e "1.\t '$str -q [QUELLE] -z [ZIEL]': Der Zielordner darf nicht existieren bzw. Dateien enthalten!" >&2
+		echo -e "2.\t '$str -q [QUELLE] -z [ZIEL] -o': Alle Dateien im Zielordner werden überschrieben (also auch bereits vorhandene)." >&2
+		echo -e "3.\t '$str -q [QUELLE] -z [ZIEL] -a': Alle Dateien, die noch nicht im Zielordner existieren, werden hinzugefuegt." >&2
+		echo -e "4.\t '$str -q [QUELLE] -z [ZIEL]': Wenn der Zielordner auch der Quellordner ist, wird ein Zwischenspeicher erstellt." >&2
 		echo -e "\t Dieser Zwischenspeicher wird am Ende alle Dateien im Quellordner ueberschreiben." >&2
-		echo -e "5.\t 'gym_compress': In dem Ordner, in dem Sie sich momentan befinden, werden ALLE .jpg, .jpeg sowie .png Bilder gesucht und in gleicher Struktur in einem Ordner außerhalb des momentanen Ordners angelegt. Dessen Namen wird mit '_compressed' enden." >&2
+		echo -e "5.\t '$str': In dem Ordner, in dem Sie sich momentan befinden, werden ALLE .jpg, .jpeg sowie .png Bilder gesucht und in gleicher Struktur in einem Ordner außerhalb des momentanen Ordners angelegt. Dessen Namen wird mit '_compressed' enden." >&2
 		echo "" >&2
 		exit 2 # exit mit Hinweis 2 = nur Info
 	  ;;
